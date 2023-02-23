@@ -14,6 +14,9 @@ import asyncio
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
 
+led = digitalio.DigitalInOut(LED)
+led.direction = digitalio.Direction.OUTPUT
+
 # comment out these lines for non_US keyboards
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS as KeyboardLayout
 from adafruit_hid.keycode import Keycode
