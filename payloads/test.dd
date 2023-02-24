@@ -1,0 +1,5 @@
+DELAY 600
+GUI r
+DELAY 200
+STRING http://example.com/
+ENTER
