@@ -166,18 +166,15 @@ keyboard_layout_win_de.mpy
 keycode_win_de.mpy
 ```
 
-
-
 ## Useful links and resources
 
 ### How to recover your Pico if it becomes corrupted or doesn't boot.
+Follow these instructions if your Pico ends up in an odd state
 
-[Reset Instructions](RESET.md)
-
-### Installation Tool
-
-[raspberrydeveloper](https://github.com/raspberrydeveloper) Created a tool to convert a blank RPi Pico to a ducky.  
-You can find the tool [here](https://github.com/raspberrydeveloper/pyducky)
+1. Download the reset firmware from [flash_nuke.uf2](https://datasheets.raspberrypi.com/soft/flash_nuke.uf2)
+2. While holding the BOOTSEL button on the Pico, plug in the USB cable to your computer.
+3. When the RPI-RP2 drive shows up on your computer, copy the flash_nuke.uf2 file to the Pico
+4. After the device reboots, follow the Install instructions.
 
 ### Docs
 
@@ -187,10 +184,3 @@ You can find the tool [here](https://github.com/raspberrydeveloper/pyducky)
 
 [Ducky Script](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Duckyscript)
 
-### Video tutorials
-
-[pico-ducky tutorial by **NetworkChuck**](https://www.youtube.com/watch?v=e_f9p-_JWZw)
-
-[USB Rubber Ducky playlist by **Hak5**](https://www.youtube.com/playlist?list=PLW5y1tjAOzI0YaJslcjcI4zKI366tMBYk)
-
-[CircuitPython tutorial on the Raspberry Pi Pico by **DroneBot Workshop**](https://www.youtube.com/watch?v=07vG-_CcDG0)
