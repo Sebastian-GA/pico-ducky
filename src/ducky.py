@@ -133,9 +133,12 @@ def runScript(file):
 
 
 def runDefaultPayload():
-    f = open("/payloads/default.dd", "r", encoding="utf-8")
-    lines = f.readlines()
-    if len(lines) == 1:  # In case the file only have the filename
-        runScript(lines[0].rstrip())
-    else:  # In case the file is a payload
-        runScript("/payloads/default.dd")
+    try:
+        f = open("/payloads/default.dd", "r", encoding="utf-8")
+        lines = f.readlines()
+        if len(lines) == 1:  # In case the file only have the filename
+            runScript(lines[0].rstrip())
+        else:  # In case the file is a payload
+            runScript("/payloads/default.dd")
+    except OSError as e:
+        print("Unable to open default payload")
