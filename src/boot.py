@@ -9,7 +9,7 @@ import digitalio
 import storage
 
 noStorageStatus = False
-noStoragePin = digitalio.DigitalInOut(GP15)
+noStoragePin = digitalio.DigitalInOut(GP11)  # Btn_3
 noStoragePin.direction = digitalio.Direction.INPUT
 noStoragePin.pull = digitalio.Pull.UP
 noStorageStatus = noStoragePin.value
@@ -20,9 +20,7 @@ noStorageStatus = noStoragePin.value
 if (noStorageStatus == True):
     # don't show USB drive to host PC
     storage.disable_usb_drive()
-    storage.remount("/", readonly=False)
     print("Disabling USB drive")
 else:
     # normal boot
-    storage.remount("/", readonly=True)
     print("USB drive enabled")
