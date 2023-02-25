@@ -53,17 +53,20 @@ class Menu():
         self.curS = 0
         self.curA = 0
 
-    def execute(self):
-        if callable(self.content):
-            if not self.argument is None:
-                return self.content(self.argument)
-            return self.content()
-
     def select(self):
         if type(self.content) is list:
             if self._backeable and self.curA + self.curS == len(self.content) - 1:
-                return -1
-            return self.content[self.curA + self.curS]
+                return -1  # Back
+            option = self.content[self.curA + self.curS]
+            if type(option) is Menu:
+                if callable(option.content):
+                    if not option.argument is None:
+                        option.content(option.argument)
+                    else:
+                        option.content()
+                    return 0
+                else:
+                    return option
 
     def return_display(self):
         # TODO add options to nums

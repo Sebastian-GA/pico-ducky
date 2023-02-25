@@ -95,24 +95,20 @@ def display_menu(my_menu):
         if my_hat.bt_down.rose:  # Scroll down
             my_menu.scroll_down()
         if my_hat.bt_1.rose:  # Enter
-
-            if callable(my_menu.content):
-                my_menu.execute()
-                return 0
-            else:  # Menu
-                answer = my_menu.select()
-                if answer is -1:  # Back
-                    return -1  # Exit from this menu and go back
-                else:
-                    # # Update menu content in case default changed
-                    # if my_menu.name == "main" and answer.name == "Run Payload":
-                    #     my_menu.content[0].set_content(
-                    #         get_payloads(run_payload))
-                    # if my_menu.name == "main" and answer.name == "Set Default Payload":
-                    #     my_menu.content[0].set_content(
-                    #         get_payloads(set_default_payload))
-                    display_menu(answer)  # Run the new menu
-
+            answer = my_menu.select()
+            if answer is -1:  # Back
+                return -1  # Exit from this menu and go back
+            elif answer is 0:  # Ran the function without problem
+                pass
+            else:
+                # # Update menu content in case default changed
+                # if my_menu.name == "main" and answer.name == "Run Payload":
+                #     my_menu.content[0].set_content(
+                #         get_payloads(run_payload))
+                # if my_menu.name == "main" and answer.name == "Set Default Payload":
+                #     my_menu.content[0].set_content(
+                #         get_payloads(set_default_payload))
+                display_menu(answer)  # Run the new menu
     return 0
 
 
