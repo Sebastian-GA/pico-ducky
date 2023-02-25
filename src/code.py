@@ -10,6 +10,8 @@ from oled_hat import HAT
 import ducky
 import menu
 
+import game_of_life
+
 
 def get_payloads(function):
     # Returns a list of all avaiable payloads in /payloads folder
@@ -58,10 +60,17 @@ def set_default_payload(file):
     #     print("ptm this doesnt work")
 
 
+def play_game_of_life():
+    global my_hat
+    game_of_life.play(display=my_hat.display)
+
+
 main_menu = menu.Menu(name="main",
                       content=[menu.Menu("Run Payload", get_payloads(run_payload), None, "Cancel"),
                                menu.Menu("Set Default Payload", get_payloads(
                                    set_default_payload), None, "Cancel"),
+                               menu.Menu("Game of Life",
+                                         play_game_of_life, None),
                                # menu.Menu("Keyboard", "peeep", None, None),
                                # menu.Menu("Mouse", "peeep", None, None),
                                ],
