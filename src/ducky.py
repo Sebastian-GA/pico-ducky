@@ -6,13 +6,13 @@ import usb_hid
 from adafruit_hid.keyboard import Keyboard
 
 # comment out these lines for non_US keyboards
-from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS as KeyboardLayout
-from adafruit_hid.keycode import Keycode
+# from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS as KeyboardLayout
+# from adafruit_hid.keycode import Keycode
 
 # uncomment these lines for non_US keyboards
 # replace LANG with appropriate language
-# from keyboard_layout_win_LANG import KeyboardLayout
-# from keycode_win_LANG import Keycode
+from keyboard_layout_win_es import KeyboardLayout
+from keycode_win_es import Keycode
 
 import time
 import digitalio
@@ -42,8 +42,7 @@ duckyCommands = {
     'Z': Keycode.Z, 'F1': Keycode.F1, 'F2': Keycode.F2, 'F3': Keycode.F3,
     'F4': Keycode.F4, 'F5': Keycode.F5, 'F6': Keycode.F6, 'F7': Keycode.F7,
     'F8': Keycode.F8, 'F9': Keycode.F9, 'F10': Keycode.F10, 'F11': Keycode.F11,
-    'F12': Keycode.F12,  # 'Ñ': Keycode.Ñ, # TODO check ñ in lib
-
+    'F12': Keycode.F12,
 }
 
 
