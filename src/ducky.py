@@ -107,7 +107,7 @@ def parseLine(line):
 
 kbd = Keyboard(usb_hid.devices)
 layout = KeyboardLayout(kbd)
-defaultDelay = 30
+defaultDelay = 50
 
 
 def runScript(file):

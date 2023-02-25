@@ -71,7 +71,7 @@ main_menu = menu.Menu(name="main",
 my_hat = HAT()
 my_hat.update_bts()
 my_hat.display.sleep()
-time.sleep(0.01)
+time.sleep(1)
 
 
 # --------------------- MAIN PROGRAM ---------------------
@@ -98,6 +98,7 @@ def display_menu(my_menu):
 
             if callable(my_menu.content):
                 my_menu.execute()
+                return 0
             else:  # Menu
                 answer = my_menu.select()
                 if answer is -1:  # Back
