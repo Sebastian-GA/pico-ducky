@@ -17,7 +17,6 @@ from adafruit_hid.keycode import Keycode
 import time
 import digitalio
 from board import *
-import asyncio
 
 led = digitalio.DigitalInOut(LED)
 led.direction = digitalio.Direction.OUTPUT
@@ -131,32 +130,6 @@ def runScript(file):
             time.sleep(float(defaultDelay)/1000)
     except OSError as e:
         print("Unable to open file ", file)
-
-
-async def blink_led(led):
-    print("starting blink_pico_led")
-    led_state = False
-    while True:
-        if led_state:
-            # led_pwm_up(led)
-            # print("led up")
-            for i in range(100):
-                # PWM LED up and down
-                if i < 50:
-                    led.duty_cycle = int(i * 2 * 65535 / 100)  # Up
-                await asyncio.sleep(0.01)
-            led_state = False
-        else:
-            # led_pwm_down(led)
-            # print("led down")
-            for i in range(100):
-                # PWM LED up and down
-                if i >= 50:
-                    led.duty_cycle = 65535 - \
-                        int((i - 50) * 2 * 65535 / 100)  # Down
-                await asyncio.sleep(0.01)
-            led_state = True
-        await asyncio.sleep(0)
 
 
 def runDefaultPayload():
