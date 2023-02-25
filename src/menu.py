@@ -17,13 +17,13 @@ def constrain(var, min, max):
 
 
 class Menu():
-    def __init__(self, name, content, arg, back):
+    def __init__(self, name, content, arg, back=None):
         self.name = name
-        # If content is callable, call as self.content(self.argument)
-        self.argument = arg
         self._backeable = not back is None
         self.back = back
+        # If content is callable, call as self.content(self.argument)
         self.set_content(content)
+        self.argument = arg
 
         self.curS = 0  # Position of cursor in screen
         self.curA = 0  # Index of first element in screen
@@ -35,6 +35,7 @@ class Menu():
             self.content.append(str(self.back))
 
     def scroll_up(self):
+        # Display maximum 4 items
         num_options = constrain(len(self.content), 1, 4)
         if self.curS == 0:
             self.curA = constrain(
@@ -74,7 +75,7 @@ class Menu():
             num_options = constrain(len(self.content), 1, 4)
             for i in range(num_options):
                 option = self.content[i + self.curA]
-                text = "fadfadfasdfadf"
+                text = "This is a bug!"
                 if (type(option) is str) or (type(option) is int) or (type(option) is float):
                     text = str(option)
                 elif type(option) is Menu:
