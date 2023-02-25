@@ -68,6 +68,9 @@ class Menu():
                 else:
                     return option
 
+    def is_backeable(self):
+        return self._backeable
+
     def return_display(self):
         # TODO add options to nums
         if type(self.content) is list:

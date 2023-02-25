@@ -94,6 +94,9 @@ def display_menu(my_menu):
             my_menu.scroll_up()
         if my_hat.bt_down.rose:  # Scroll down
             my_menu.scroll_down()
+        if my_hat.bt_3.rose:  # Back button
+            if my_menu.is_backeable():
+                return -1
         if my_hat.bt_1.rose:  # Enter
             answer = my_menu.select()
             if answer is -1:  # Back
