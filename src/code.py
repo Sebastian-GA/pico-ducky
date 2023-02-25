@@ -65,6 +65,7 @@ main_menu = menu.Menu(name="main",
                                # menu.Menu("Keyboard", "peeep", None, None),
                                # menu.Menu("Mouse", "peeep", None, None),
                                ],
+                      arg=None
                       )
 
 my_hat = HAT()
@@ -75,7 +76,7 @@ time.sleep(0.01)
 
 # --------------------- MAIN PROGRAM ---------------------
 if not my_hat.bt_3.value:  # Run Payload
-    ducky.runDefaultScript()
+    ducky.runDefaultPayload()
 
 my_hat.display.wake()
 

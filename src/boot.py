@@ -3,13 +3,12 @@
 # Author: Dave Bailey (dbisu, @daveisu)
 # Pico and Pico W board support
 
-from board import *
 import board
 import digitalio
 import storage
 
 noStorageStatus = False
-noStoragePin = digitalio.DigitalInOut(GP11)  # Btn_3
+noStoragePin = digitalio.DigitalInOut(board.GP11)  # Btn_3
 noStoragePin.direction = digitalio.Direction.INPUT
 noStoragePin.pull = digitalio.Pull.UP
 noStorageStatus = noStoragePin.value
