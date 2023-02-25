@@ -1,6 +1,6 @@
 import board
 import digitalio
-from adafruit_debouncer import Button
+from adafruit_debouncer import Debouncer
 
 import displayio
 import busio
@@ -55,14 +55,14 @@ class HAT():
                                                         rotation=180)
 
         # Setup buttons
-        self.bt_up = Button(init_bt(PIN_BT_UP))
-        self.bt_down = Button(init_bt(PIN_BT_DOWN))
-        self.bt_left = Button(init_bt(PIN_BT_LEFT))
-        self.bt_right = Button(init_bt(PIN_BT_RIGHT))
-        self.bt_center = Button(init_bt(PIN_BT_CENTER))
-        self.bt_1 = Button(init_bt(PIN_BT_1))
-        self.bt_2 = Button(init_bt(PIN_BT_2))
-        self.bt_3 = Button(init_bt(PIN_BT_3))
+        self.bt_up = Debouncer(init_bt(PIN_BT_UP))
+        self.bt_down = Debouncer(init_bt(PIN_BT_DOWN))
+        self.bt_left = Debouncer(init_bt(PIN_BT_LEFT))
+        self.bt_right = Debouncer(init_bt(PIN_BT_RIGHT))
+        self.bt_center = Debouncer(init_bt(PIN_BT_CENTER))
+        self.bt_1 = Debouncer(init_bt(PIN_BT_1))
+        self.bt_2 = Debouncer(init_bt(PIN_BT_2))
+        self.bt_3 = Debouncer(init_bt(PIN_BT_3))
         self.bts = [self.bt_up, self.bt_down, self.bt_left, self.bt_right,
                     self.bt_center, self.bt_1, self.bt_2, self.bt_3]
 
