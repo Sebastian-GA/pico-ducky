@@ -1,20 +1,17 @@
 import board
-import time
 import digitalio
+from adafruit_debouncer import Button
+
 import displayio
 import busio
-
 import adafruit_displayio_sh1106
-from adafruit_debouncer import Debouncer
-
 from adafruit_display_shapes.rect import Rect
 
 displayio.release_displays()
 
 # ---------------------------------
-# CONEXIONS
-# Butthons
-PIN_BT_UP = board.GP7  # GPIO6
+# Buttons
+PIN_BT_UP = board.GP7    # GPIO6
 PIN_BT_DOWN = board.GP9  # GPIO19
 PIN_BT_LEFT = board.GP6  # GPIO5
 PIN_BT_RIGHT = board.GP10  # GPIO26
@@ -32,10 +29,9 @@ PIN_DC = board.GP20  # GPIO24
 WIDTH = 128
 HEIGHT = 64
 
-# Init an input
 
-
-def init_bt(pin):  # https://learn.adafruit.com/debouncer-library-python-circuitpython-buttons-sensors/advanced-debouncing
+def init_bt(pin):  # Init buttons
+    # Reference: https://learn.adafruit.com/debouncer-library-python-circuitpython-buttons-sensors/advanced-debouncing
     bt = digitalio.DigitalInOut(pin)
     bt.direction = digitalio.Direction.INPUT
     bt.pull = digitalio.Pull.UP
@@ -59,27 +55,21 @@ class HAT():
                                                         rotation=180)
 
         # Setup buttons
-        self.bt_up = Debouncer(init_bt(PIN_BT_UP))
-        self.bt_down = Debouncer(init_bt(PIN_BT_DOWN))
-        self.bt_left = Debouncer(init_bt(PIN_BT_LEFT))
-        self.bt_right = Debouncer(init_bt(PIN_BT_RIGHT))
-        self.bt_center = Debouncer(init_bt(PIN_BT_CENTER))
-        self.bt_1 = Debouncer(init_bt(PIN_BT_1))
-        self.bt_2 = Debouncer(init_bt(PIN_BT_2))
-        self.bt_3 = Debouncer(init_bt(PIN_BT_3))
-        self.buttons = [self.bt_up, self.bt_down, self.bt_left, self.bt_right,
-                        self.bt_center, self.bt_1, self.bt_2, self.bt_3]
+        self.bt_up = Button(init_bt(PIN_BT_UP))
+        self.bt_down = Button(init_bt(PIN_BT_DOWN))
+        self.bt_left = Button(init_bt(PIN_BT_LEFT))
+        self.bt_right = Button(init_bt(PIN_BT_RIGHT))
+        self.bt_center = Button(init_bt(PIN_BT_CENTER))
+        self.bt_1 = Button(init_bt(PIN_BT_1))
+        self.bt_2 = Button(init_bt(PIN_BT_2))
+        self.bt_3 = Button(init_bt(PIN_BT_3))
+        self.bts = [self.bt_up, self.bt_down, self.bt_left, self.bt_right,
+                    self.bt_center, self.bt_1, self.bt_2, self.bt_3]
 
     # Update Buttons
     def update_bts(self):
-        self.bt_up.update()
-        self.bt_down.update()
-        self.bt_left.update()
-        self.bt_right.update()
-        self.bt_center.update()
-        self.bt_1.update()
-        self.bt_2.update()
-        self.bt_3.update()
+        for bt in self.bts:
+            bt.update()
 
     def clear(self):
         splash = displayio.Group()
